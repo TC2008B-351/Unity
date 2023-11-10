@@ -6,7 +6,7 @@ public class VectorOps : MonoBehaviour
 {
     public static float Dot(Vector3 a, Vector3 b)
     {
-        return (a.x * b.x) + (a.y + b.y) + (a.z + b.z);
+        return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
     }
 
     public static float Magnitude(Vector3 v)
