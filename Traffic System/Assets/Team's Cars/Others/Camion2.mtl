@@ -1,0 +1,5 @@
+newmtl Camion
+map_Kd camion_mat_2.png
+Kd 1 1 1
+d 1
+

@@ -1,0 +1,55 @@
+Diego Jacobo Martínez
+
+- Diego's Car
+I made my own car model and map the uvs for it, also made a normal map and help my teammates with theirs.
+ You can found my car model by importing the unity package and looking at the Diego's Car Folder located in Assets/POLYGON city pack/coches/Diego's Car
+
+- Mesa Grid & algorithm
+I made the grid for the mesa representation of the city and the algorithm to help the mesa code to find the best path to the destination using the A* algorithm with the help of a Manhattan heuristic.
+ You can find the code at the aStar.py file located in the mesa folder at the repo containing the project.
+
+- Mesa Agents and model
+I created initially all the required agents and implemented the full functionality of the semaphore agent, also I made visualizations for the agents with different colors.
+ You can find the code at the agents.py & run.py file located in the mesa folder at the repo containing the project.
+
+- Map
+I made the map for the city using the grid provided and I wrote the coordinates of the buildings, semaphores and parking lots in the map.
+ You can find the code at the map.py file located in the mesa folder at the repo containing the project.
+
+José Aram Méndez Gómez
+
+- Aram's Car
+I modeled the car and made the textures for it by mapping the uvs on probuilder. You can found my car model by importing the unity package and looking at the Aram's Car Folder located in Assets/POLYGON city pack/coches/Aram's Car
+
+- Mesa Agents 
+Made the parking lot agent and added the functionality needed to the car to move through the grid smoothly with validation of environment, with the end goal being a parking lot. 
+
+- Mesa Model
+Adapted the model so it handles parking lots and cars.
+
+- Flask APIs and JSONs
+Connected the model with flask and made the api so that Unity can request positions of the cars through jsons.
+
+- Unity Connection Scripts
+Wrote Unity Scripts to connect with Flask.
+
+
+Julia Pastén Da Silva
+
+-Perform the city mapping, scaling it frame by frame in Unity's view to make it easy to design vectors for the movement of cars. The lights in our scene were modified using the previous knowledge from the class.
+
+- Julia's Car
+I created my car and the textures for it by mapping the uvs on probuilder and then importing and including a png file with the textures into an unity material.
+ You can found my car model by importing the unity package and looking at the Julia's Car Folder located in Assets/POLYGON city pack/coches/julia's Car
+
+José Andrés Rodríguez Ruiz
+
+-Andrés's Car:
+I used probuilder to create my car model and then I mapped the uvs and created the textures for it.
+You can found my car model by importing the unity package and looking at the Andre's Car Folder located in Assets/POLYGON city pack/coches/AndresCar
+
+-Perfomed details in city map:
+Streets done as parents for a more easy work with them, also the lamps all around the city as the light it gives.
+
+-All semaphores all around the city:
+I've done the script of semaphores and colocated them al around the city.

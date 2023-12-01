@@ -20,11 +20,161 @@ public class VectorOps : MonoBehaviour
         return new Vector3(v.x / vm, v.y / vm, v.z / vm);
     }
 
-    public static float Angle(Vector3 a, Vector3 b)
+    public static float AngleBetween(Vector3 a, Vector3 b)
     {
         Vector3 ua = Unitary(a);
         Vector3 ub = Unitary(b);
         return Mathf.Acos(Dot(ua, ub));
+    }
+
+    public static float ToUnityCoordinate(float x)
+    {
+        return x * 100 + 50;
+    }
+
+    public static Vector3 GetMiddle(float x1, float x2, float z1, float z2)
+    {
+        return new Vector3(
+            (ToUnityCoordinate(x1) + ToUnityCoordinate(x2)) / 2,
+            0,
+            (ToUnityCoordinate(z1) + ToUnityCoordinate(z2)) / 2
+        );
+    }
+
+    public static Vector3 GetPP(float x1, float x2, float x3, float z1, float z2, float z3)
+    {
+        Vector3 pivot = GetMiddle(x1, x3, z1, z3);
+        Vector3 carPos = GetMiddle(x1, x2, z1, z2);
+        float angle_1_to_2 = AngleFromTo(x1, z1, x2, z2);
+        if (angle_1_to_2 == 0)
+        {
+            if (carPos.z < pivot.z)
+            {
+                return new Vector3(0, 0, 50);
+            }
+            else
+            {
+                return new Vector3(0, 0, -50);
+            }
+        }
+        else if (angle_1_to_2 == 90)
+        {
+            if (carPos.x < pivot.x)
+            {
+                return new Vector3(0, 0, 50);
+            }
+            else
+            {
+                return new Vector3(0, 0, -50);
+            }
+        }
+        else if (angle_1_to_2 == 180)
+        {
+            if (carPos.z < pivot.z)
+            {
+                return new Vector3(0, 0, -50);
+            }
+            else
+            {
+                return new Vector3(0, 0, 50);
+            }
+        }
+        else if (angle_1_to_2 == 270)
+        {
+            if (carPos.x < pivot.x)
+            {
+                return new Vector3(0, 0, -50);
+            }
+            else
+            {
+                return new Vector3(0, 0, 50);
+            }
+        }
+        else
+        {
+            return new Vector3(0, 0, 0);
+        }
+    }
+
+    public static float AngleFromTo(float x1, float y1, float x2, float y2)
+    {
+        // Comparing x and y values to determine the angle
+        if (x2 > x1 && y2 == y1)
+        {
+            return 0;
+        }
+        else if (x2 == x1 && y2 < y1)
+        {
+            return 90;
+        }
+        else if (x2 < x1 && y2 == y1)
+        {
+            return 180;
+        }
+        else if (x2 == x1 && y2 > y1)
+        {
+            return 270;
+        }
+        else
+        {
+            return 90;
+        }
+    }
+
+    public static bool ShouldTurn(float x1, float y1, float x2, float y2, float x3, float y3)
+    {
+        // Compare the angles between the vectors
+        if (AngleFromTo(x1, y1, x2, y2) != AngleFromTo(x2, y2, x3, y3))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static float AngleTurn(float x1, float y1, float x2, float y2, float x3, float y3)
+    {
+        float angle_1_2 = AngleFromTo(x1, y1, x2, y2);
+        float angle_2_3 = AngleFromTo(x2, y2, x3, y3);
+
+        if (angle_1_2 == 270 && angle_2_3 == 0)
+        {
+            return 90;
+        }
+        else if (angle_1_2 == 270 && angle_2_3 == 180)
+        {
+            return -90;
+        }
+        else if (angle_1_2 == 0 && angle_2_3 == 90)
+        {
+            return 90;
+        }
+        else if (angle_1_2 == 0 && angle_2_3 == 270)
+        {
+            return -90;
+        }
+        else if (angle_1_2 == 90 && angle_2_3 == 180)
+        {
+            return 90;
+        }
+        else if (angle_1_2 == 90 && angle_2_3 == 0)
+        {
+            return -90;
+        }
+        else if (angle_1_2 == 180 && angle_2_3 == 270)
+        {
+            return 90;
+        }
+        else if (angle_1_2 == 180 && angle_2_3 == 90)
+        {
+            return -90;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public static float Cross(Vector3 a, Vector3 b)

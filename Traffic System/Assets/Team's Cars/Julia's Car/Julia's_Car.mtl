@@ -1,0 +1,5 @@
+newmtl Julia
+map_Kd Julias_mat.png
+Kd 1 1 1
+d 1
+
